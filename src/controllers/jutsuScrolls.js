@@ -1,4 +1,5 @@
 import { connectToMongo, closedMongodb } from "../utils/database.js";
+import { ObjectId } from "mongodb";
 const collection = 'jutsuScroll'
 
 
@@ -27,13 +28,13 @@ export async function insertJutsuScroll(body){
 
 export async function updateJutsuScroll(id, body){
     const db = await connectToMongo();
-    const result = await db.collection(collection).updateOne({_id: id}, {$set: {body}})
+    const result = await db.collection(collection).updateOne({_id: new ObjectId(id)}, {$set: body})
     return result.modifiedCount
 }
 
 
 export async function deleteJutsuScroll(id){
     const db = await connectToMongo();
-    const result = await db.collection(collection).deleteOne({_id: id})
+    const result = await db.collection(collection).deleteOne({ _id: new ObjectId(id) })
     return result.deletedCount
 }

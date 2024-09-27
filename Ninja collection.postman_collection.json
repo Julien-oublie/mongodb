@@ -1,0 +1,109 @@
+{
+	"info": {
+		"_postman_id": "9ebb97db-6a50-4265-b2b9-de46edea83bb",
+		"name": "Ninja collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17556388"
+	},
+	"item": [
+		{
+			"name": "http://localhost:3001/jutsuScrolls",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3001/jutsuScrolls",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"jutsuScrolls"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3001/jutsuScrolls/create",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nom\": \"Mille oiseau\",\n    \"créateur\": \"Sasuke\",\n    \"rang\": \"B\",\n    \"quantité\": 1,\n    \"description\": \"Pein d'éléctricité\",\n    \"catégorie\": \"Raiton\",\n    \"techniques associées\": \"Kirin\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3001/jutsuScrolls/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"jutsuScrolls",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3001/jutsuScrolls/update/66f6e0a14c815ef6e096942a",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nom\": \"Rasengan\",\n    \"créateur\": \"Naruto\",\n    \"rang\": \"S\",\n    \"quantité\": 1,\n    \"description\": \"Vent tourbillonant\",\n    \"catégorie\": \"Futon\",\n    \"techniques associées\": \"Rasen-shuriken\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3001/jutsuScrolls/update/66f6e0a14c815ef6e096942a",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"jutsuScrolls",
+						"update",
+						"66f6e0a14c815ef6e096942a"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3001/jutsuScrolls/delete/66f6e0a14c815ef6e096942b",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3001/jutsuScrolls/delete/66f6e0a14c815ef6e096942b",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"jutsuScrolls",
+						"delete",
+						"66f6e0a14c815ef6e096942b"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

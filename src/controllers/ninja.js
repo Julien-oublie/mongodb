@@ -1,4 +1,5 @@
 import { connectToMongo, closedMongodb } from "../utils/database.js";
+import { ObjectId } from "mongodb";
 const collection = 'ninja'
 
 
@@ -27,13 +28,13 @@ export async function insertNinja(body){
 
 export async function updateNinja(id, body){
     const db = await connectToMongo();
-    const result = await db.collection(collection).updateOne({_id: id}, {$set: {body}})
+    const result = await db.collection(collection).updateOne({_id: new ObjectId(id)}, {$set: body})
     return result.modifiedCount
 }
 
 
 export async function deleteNinja(id){
     const db = await connectToMongo();
-    const result = await db.collection(collection).deleteOne({_id: id})
+    const result = await db.collection(collection).deleteOne({_id: new ObjectId(id)})
     return result.deletedCount
 }
