@@ -3,6 +3,52 @@ import { getEmprunt, insertEmprunt, deleteEmprunt, updateEmprunt } from '../cont
 
 const routerEmprunt = express.Router();
 
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     Emprunt:
+ *       type: object
+ *       required:
+ *         - id
+ *         - nom
+ *         - montant
+ *         - date
+ *       properties:
+ *         id:
+ *           type: string
+ *           description: L'identifiant unique de l'emprunt
+ *         nom:
+ *           type: string
+ *           description: Le nom de l'emprunteur
+ *         montant:
+ *           type: number
+ *           description: Le montant de l'emprunt
+ *         date:
+ *           type: string
+ *           format: date
+ *           description: La date de l'emprunt
+ *       example:
+ *         id: 1
+ *         nom: Julien Oublié
+ *         montant: 5000
+ *         date: 2024-09-27
+ */
+/**
+ * @swagger
+ * /emprunt:
+ *   get:
+ *     summary: Récupérer la liste des emprunts
+ *     responses:
+ *       200:
+ *         description: La liste de tous les emprunts
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/Emprunt'
+ */
 routerEmprunt.get('/', async function(req, res) {
     try {
         const data = await getEmprunt();
@@ -13,6 +59,23 @@ routerEmprunt.get('/', async function(req, res) {
     }
 });
 
+/**
+ * @swagger
+ * /emprunt/create:
+ *   post:
+ *     summary: Créer un nouvel emprunt
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/Emprunt'
+ *     responses:
+ *       200:
+ *         description: Emprunt créé avec succès
+ *       500:
+ *         description: Erreur lors de la création de l'emprunt
+ */
 routerEmprunt.post('/create', async function(req, res) {
     try {
         const result = await insertEmprunt(req.body);
@@ -23,6 +86,24 @@ routerEmprunt.post('/create', async function(req, res) {
     }
 });
 
+/**
+ * @swagger
+ * /emprunt/delete/{id}:
+ *   delete:
+ *     summary: Supprimer un emprunt par ID
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: L'ID de l'emprunt à supprimer
+ *     responses:
+ *       200:
+ *         description: Emprunt supprimé avec succès
+ *       500:
+ *         description: Erreur lors de la suppression de l'emprunt
+ */
 routerEmprunt.delete('/delete/:id', async function(req, res) {
     try {
         const result = await deleteEmprunt(req.params.id);
@@ -33,6 +114,30 @@ routerEmprunt.delete('/delete/:id', async function(req, res) {
     }
 });
 
+/**
+ * @swagger
+ * /emprunt/update/{id}:
+ *   put:
+ *     summary: Mettre à jour un emprunt par ID
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: L'ID de l'emprunt à mettre à jour
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/Emprunt'
+ *     responses:
+ *       200:
+ *         description: Emprunt mis à jour avec succès
+ *       500:
+ *         description: Erreur lors de la mise à jour de l'emprunt
+ */
 routerEmprunt.put('/update/:id', async function(req, res) {
     try {
         const result = await updateEmprunt(req.params.id, req.body);

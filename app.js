@@ -4,6 +4,7 @@ import routerJutsu from './src/routes/jutsuScrolls.js'
 import ninja from './src/routes/ninja.js'
 import emprunt from './src/routes/emprunt.js'
 
+import { swaggerDocs } from './swagger.js';
 const app = express();
 
 app.use(express.json())
@@ -17,7 +18,9 @@ app.get('/hello', function (req, res) {
     res.send({message: 'hello'})
     
 })
+const port = process.env.PORT || 3001;
+swaggerDocs(app, port);
 
-app.listen(3001, () => {
-  console.log('le serveur tourne')
-})
+app.listen(port, () => {
+  console.log(`Le serveur tourne sur http://localhost:${port}`);
+});
