@@ -32,7 +32,7 @@ Le serveur sera lancé et vous pourrez accéder à l'application à l'adresse ht
 
 ## Importer les requêtes Postman
 
-1. Téléchargez le fichier de collection Postman (fournir le lien ou indiquer comment le recevoir).
+1. Téléchargez le fichier de collection Postman founis dans le repos sous le nom "Ninja collection.postman_collection.json".
 
 2. Ouvrez Postman.
 
